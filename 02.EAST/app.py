@@ -116,5 +116,16 @@ for (initX, initY, endX, endY) in deteccoes:
 cv2.imshow("teste", image)
 cv2.imshow("region of interest roi", roi)
 
+grayRoi = cv2.resize(cv2.cvtColor(roi, cv2.COLOR_BGR2GRAY), fx=2.2, fy=2.2, interpolation=cv2.INTER_CUBIC, dsize=None)
+cv2.imshow("roiGray", grayRoi)
+
+val, thresh = cv2.threshold(grayRoi, 180, 255, cv2.THRESH_BINARY)
+cv2.imshow('thresh', thresh)
+
+dilated = cv2.dilate(thresh, np.ones((3,3), np.uint8))
+cv2.imshow('dilated', dilated)
+
+string = pytesseract.image_to_string(dilated, lang="eng", config=config_pytesseract)
+print(string)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
