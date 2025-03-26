@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import pytesseract
 
-image = cv2.imread("preProcessamento/src/teste.jpg")
+image = cv2.imread("01.preProcessamento/src/teste.jpg")
 
 cv2.imshow('teste', image)
 
@@ -25,7 +25,7 @@ cv2.imshow("otsu", otsu)
 adapt_media = cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 7, 9)
 cv2.imshow("media_thresh", adapt_media)
 
-livro = cv2.imread("preProcessamento/src/pagina.jpg")
+livro = cv2.imread("01.preProcessamento/src/pagina.jpg")
 cv2.imshow("livro", livro)
 
 adapt_mean = cv2.adaptiveThreshold(cv2.cvtColor(livro, cv2.COLOR_BGR2GRAY), 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 11, 9)
@@ -47,7 +47,7 @@ adapt_gauss = cv2.adaptiveThreshold(invert, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C,
 cv2.imshow("negative_gauss", adapt_gauss)
 
 #operacoes morfológicas - erosão (diminui a quantidade de pixels brancos do objeto) e dilatação (aumenta quantidade de pixels brancos do objeto)
-image = cv2.imread("preProcessamento/src/morfologica.png")
+image = cv2.imread("01.preProcessamento/src/morfologica.png")
 cv2.imshow("morfologica", image)
 
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -69,7 +69,7 @@ erosaoDilatacao = cv2.dilate(erosao, np.ones((5,5), np.uint8))
 cv2.imshow("erosaoDilatacao", erosaoDilatacao)
 
 #blur para remoção de ruido
-ruido = cv2.imread("preProcessamento/src/imageRuido.jpg")
+ruido = cv2.imread("01.preProcessamento/src/imageRuido.jpg")
 cv2.imshow("original", ruido)
 
 ruidoAmpliado = cv2.resize(ruido, None, fx=1.8, fy=1.8, interpolation=1)
@@ -90,7 +90,7 @@ cv2.imshow("median_blur", median_blur)
 bilateral_blur = cv2.bilateralFilter(ruidoAmpliado, 80,55,45)
 cv2.imshow("bilateral_blur", bilateral_blur)
 
-exercicio = cv2.imread("preProcessamento/src/exercicio.webp")
+exercicio = cv2.imread("01.preProcessamento/src/exercicio.webp")
 cv2.imshow("exercicio", exercicio)
 
 exercicio = cv2.cvtColor(exercicio, cv2.COLOR_BGR2GRAY)
